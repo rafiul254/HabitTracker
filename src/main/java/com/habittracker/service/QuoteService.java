@@ -1,5 +1,4 @@
 package com.habittracker.service;
-
 import java.util.Random;
 
 public class QuoteService {

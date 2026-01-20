@@ -2,7 +2,6 @@ package com.habittracker.service;
 import com.habittracker.model.Habit;
 import java.util.ArrayList;
 import java.util.List;
-
 public class HabitAPIService {
     private List<Habit> habits;
     private int nextId;

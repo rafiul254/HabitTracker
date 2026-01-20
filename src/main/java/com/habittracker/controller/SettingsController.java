@@ -112,7 +112,6 @@ public class SettingsController {
                 currentThemeLabel.setText("Current: " + currentTheme.getName());
             }
 
-            // Create theme buttons
             for (Theme theme : ThemeManager.getAllThemes()) {
                 Button themeButton = createThemeButton(theme);
                 themeContainer.getChildren().add(themeButton);
@@ -160,11 +159,10 @@ public class SettingsController {
     private void createSettingsUI() {
         if (settingsContainer == null) return;
 
-        // Additional settings
         VBox additionalSettings = new VBox(15);
         additionalSettings.setPadding(new Insets(20));
 
-        // Auto-save setting
+
         HBox autoSaveBox = new HBox(10);
         autoSaveBox.setAlignment(Pos.CENTER_LEFT);
         CheckBox autoSaveCheck = new CheckBox("Auto-save habits");
@@ -172,7 +170,7 @@ public class SettingsController {
         autoSaveCheck.setStyle("-fx-font-size: 14px;");
         autoSaveBox.getChildren().add(autoSaveCheck);
 
-        // Sound effects
+
         HBox soundBox = new HBox(10);
         soundBox.setAlignment(Pos.CENTER_LEFT);
         CheckBox soundCheck = new CheckBox("Sound effects");
@@ -180,7 +178,7 @@ public class SettingsController {
         soundCheck.setStyle("-fx-font-size: 14px;");
         soundBox.getChildren().add(soundCheck);
 
-        // Dark mode at night
+
         HBox autoDarkBox = new HBox(10);
         autoDarkBox.setAlignment(Pos.CENTER_LEFT);
         CheckBox autoDarkCheck = new CheckBox("Auto dark mode at night");
@@ -188,7 +186,7 @@ public class SettingsController {
         autoDarkCheck.setStyle("-fx-font-size: 14px;");
         autoDarkBox.getChildren().add(autoDarkCheck);
 
-        // Test notification button
+
         Button testNotificationBtn = new Button("🔔 Test Notification");
         testNotificationBtn.setStyle(
                 "-fx-background-color: #2196F3; " +
@@ -202,7 +200,7 @@ public class SettingsController {
             notificationManager.showInfo("This is a test notification! 🎉");
         });
 
-        // Reset settings button
+
         Button resetBtn = new Button("🔄 Reset to Defaults");
         resetBtn.setStyle(
                 "-fx-background-color: #f44336; " +
@@ -238,7 +236,7 @@ public class SettingsController {
                 buttonBox
         );
 
-        // settingsContainer.getChildren().add(additionalSettings);
+
     }
 
     private void resetToDefaults() {

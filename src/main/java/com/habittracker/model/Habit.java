@@ -35,7 +35,7 @@ public class Habit {
         this.description = description;
     }
 
-    // Getters and Setters
+
     public int getId() {
         return id;
     }
@@ -120,7 +120,6 @@ public class Habit {
         this.color = color;
     }
 
-    // Business Logic
     public void toggleComplete() {
         if (completed) {
             this.completed = false;
@@ -183,4 +182,3 @@ public class Habit {
                 '}';
     }
 }
-

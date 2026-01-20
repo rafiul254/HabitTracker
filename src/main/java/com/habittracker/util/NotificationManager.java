@@ -1,5 +1,4 @@
 package com.habittracker.util;
-
 import javafx.application.Platform;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
@@ -36,7 +35,6 @@ public class NotificationManager {
 
         Platform.runLater(() -> {
             try {
-                // Try to use ControlsFX notifications (prettier)
                 Notifications notification = Notifications.create()
                         .title(title)
                         .text(message)
@@ -59,7 +57,6 @@ public class NotificationManager {
                         break;
                 }
             } catch (Exception e) {
-                // Fallback to standard alerts
                 Alert alert = new Alert(AlertType.INFORMATION);
                 alert.setTitle(title);
                 alert.setHeaderText(null);
@@ -118,7 +115,7 @@ public class NotificationManager {
     private void startReminderScheduler() {
         reminderTimer = new Timer(true);
 
-        // Schedule daily reminder
+
         reminderTimer.scheduleAtFixedRate(new TimerTask() {
             @Override
             public void run() {

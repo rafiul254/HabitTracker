@@ -1,5 +1,4 @@
 package com.habittracker.model;
-
 public class UserSettings {
     private boolean darkMode;
     private boolean notificationsEnabled;
@@ -45,5 +44,3 @@ public class UserSettings {
         this.reminderTime = reminderTime;
     }
 }
-
-

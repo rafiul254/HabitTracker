@@ -1,5 +1,4 @@
 package com.habittracker.util;
-
 import javafx.scene.Scene;
 
 public class ThemeManager {

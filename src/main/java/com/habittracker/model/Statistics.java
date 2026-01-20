@@ -1,5 +1,4 @@
 package com.habittracker.model;
-
 import java.util.HashMap;
 import java.util.Map;
 
@@ -17,7 +16,6 @@ public class Statistics {
         this.weeklyCompletion = new int[7];
     }
 
-    // Getters and Setters
     public int getTotalHabits() {
         return totalHabits;
     }
@@ -74,6 +72,3 @@ public class Statistics {
         this.weeklyCompletion = weeklyCompletion;
     }
 }
-
-
-
