@@ -1,0 +1,68 @@
+.root {
+    -fx-background-color: #1e1e1e;
+    -fx-font-family: "Segoe UI", Arial, sans-serif;
+}
+
+.label {
+    -fx-text-fill: #ffffff;
+}
+
+.button {
+    -fx-background-color: #2196F3;
+    -fx-text-fill: white;
+    -fx-background-radius: 8;
+    -fx-cursor: hand;
+    -fx-padding: 10 20;
+}
+
+.button:hover {
+    -fx-background-color: #1976D2;
+}
+
+.list-view {
+    -fx-background-color: #2d2d2d;
+    -fx-background-radius: 10;
+    -fx-border-color: #444;
+    -fx-border-width: 1;
+    -fx-border-radius: 10;
+}
+
+.list-cell {
+    -fx-background-color: #2d2d2d;
+    -fx-text-fill: white;
+    -fx-padding: 10;
+}
+
+.list-cell:selected {
+    -fx-background-color: #3d3d3d;
+}
+
+.progress-bar {
+    -fx-accent: #4CAF50;
+}
+
+.progress-bar .track {
+    -fx-background-color: #3d3d3d;
+}
+
+.text-field {
+    -fx-background-color: #2d2d2d;
+    -fx-text-fill: white;
+    -fx-background-radius: 5;
+    -fx-border-color: #444;
+    -fx-border-radius: 5;
+    -fx-padding: 10;
+}
+
+.check-box {
+    -fx-text-fill: white;
+}
+
+.check-box .box {
+    -fx-background-color: #2d2d2d;
+    -fx-border-color: #666;
+}
+
+.check-box:selected .mark {
+    -fx-background-color: #4CAF50;
+}

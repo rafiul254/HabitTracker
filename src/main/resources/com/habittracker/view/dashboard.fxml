@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.habittracker.controller.DashboardController">
+    <padding>
+        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+    </padding>
+    <top>
+        <VBox spacing="15.0" BorderPane.alignment="CENTER">
+            <children>
+                <HBox alignment="CENTER_LEFT" spacing="15.0">
+                    <children>
+                        <Label style="-fx-font-size: 28px; -fx-font-weight: bold;" text="Advanced Habit Tracker" />
+                        <Label fx:id="weatherLabel" style="-fx-font-size: 14px; -fx-padding: 10;" text="Weather Loading..." />
+                        <Button fx:id="themeToggleButton" mnemonicParsing="false" text="Toggle Theme" />
+                        <Button fx:id="addHabitButton" mnemonicParsing="false" style="-fx-background-color: #4CAF50; -fx-text-fill: white;" text="Add Habit" />
+                    </children>
+                </HBox>
+                <VBox spacing="5.0">
+                    <children>
+                        <Label style="-fx-font-size: 16px; -fx-font-weight: bold;" text="Today Progress" />
+                        <ProgressBar fx:id="todayProgressBar" prefHeight="30.0" prefWidth="1160.0" progress="0.0" />
+                    </children>
+                </VBox>
+            </children>
+        </VBox>
+    </top>
+    <center>
+        <VBox spacing="20.0" BorderPane.alignment="CENTER">
+            <children>
+                <HBox fx:id="statsContainer" alignment="CENTER" spacing="15.0">
+                    <children>
+                        <VBox alignment="CENTER" spacing="8.0" style="-fx-background-color: white; -fx-background-radius: 12; -fx-padding: 20;">
+                            <children>
+                                <Label style="-fx-font-size: 14px; -fx-text-fill: #666;" text="Total Habits" />
+                                <Label fx:id="totalHabitsLabel" style="-fx-font-size: 32px; -fx-font-weight: bold; -fx-text-fill: #2196F3;" text="0" />
+                            </children>
+                        </VBox>
+                        <VBox alignment="CENTER" spacing="8.0" style="-fx-background-color: white; -fx-background-radius: 12; -fx-padding: 20;">
+                            <children>
+                                <Label style="-fx-font-size: 14px; -fx-text-fill: #666;" text="Completed Today" />
+                                <Label fx:id="completedTodayLabel" style="-fx-font-size: 32px; -fx-font-weight: bold; -fx-text-fill: #4CAF50;" text="0" />
+                            </children>
+                        </VBox>
+                        <VBox alignment="CENTER" spacing="8.0" style="-fx-background-color: white; -fx-background-radius: 12; -fx-padding: 20;">
+                            <children>
+                                <Label style="-fx-font-size: 14px; -fx-text-fill: #666;" text="Current Streak" />
+                                <Label fx:id="currentStreakLabel" style="-fx-font-size: 32px; -fx-font-weight: bold; -fx-text-fill: #FF9800;" text="0" />
+                            </children>
+                        </VBox>
+                        <VBox alignment="CENTER" spacing="8.0" style="-fx-background-color: white; -fx-background-radius: 12; -fx-padding: 20;">
+                            <children>
+                                <Label style="-fx-font-size: 14px; -fx-text-fill: #666;" text="Total Points" />
+                                <Label fx:id="totalPointsLabel" style="-fx-font-size: 32px; -fx-font-weight: bold; -fx-text-fill: #FFC107;" text="0" />
+                            </children>
+                        </VBox>
+                    </children>
+                </HBox>
+                <VBox spacing="10.0">
+                    <children>
+                        <Label style="-fx-font-size: 20px; -fx-font-weight: bold;" text="Today Habits" />
+                        <ListView fx:id="habitListView" prefHeight="400.0" />
+                    </children>
+                </VBox>
+            </children>
+            <padding>
+                <Insets bottom="20.0" top="20.0" />
+            </padding>
+        </VBox>
+    </center>
+    <bottom>
+        <VBox spacing="10.0" BorderPane.alignment="CENTER">
+            <children>
+                <Label style="-fx-font-size: 18px; -fx-font-weight: bold;" text="Weekly Progress" />
+                <HBox fx:id="chartContainer" alignment="CENTER" spacing="10.0" style="-fx-min-height: 100; -fx-background-color: #f5f5f5; -fx-background-radius: 8;">
+                    <children>
+                        <Label text="Chart Area" />
+                    </children>
+                </HBox>
+            </children>
+            <padding>
+                <Insets top="20.0" />
+            </padding>
+        </VBox>
+    </bottom>
+</BorderPane>

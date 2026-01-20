@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<ScrollPane fitToWidth="true" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.habittracker.controller.SettingsController">
+    <content>
+        <VBox fx:id="settingsContainer" spacing="25.0">
+            <padding>
+                <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+            </padding>
+            <children>
+                <Label style="-fx-font-size: 28px; -fx-font-weight: bold;" text="⚙️ Settings" />
+
+                <!-- Theme Section -->
+                <VBox spacing="15.0" style="-fx-background-color: white; -fx-background-radius: 12; -fx-padding: 20;">
+                    <children>
+                        <Label style="-fx-font-size: 18px; -fx-font-weight: bold;" text="🎨 Theme Settings" />
+                        <Label fx:id="currentThemeLabel" style="-fx-font-size: 14px; -fx-text-fill: #666;" text="Current: Light" />
+                        <Separator />
+                        <VBox fx:id="themeContainer" spacing="10.0" />
+                    </children>
+                </VBox>
+
+                <!-- Notification Section -->
+                <VBox spacing="15.0" style="-fx-background-color: white; -fx-background-radius: 12; -fx-padding: 20;">
+                    <children>
+                        <Label style="-fx-font-size: 18px; -fx-font-weight: bold;" text="🔔 Notification Settings" />
+
+                        <CheckBox fx:id="notificationsCheckBox" style="-fx-font-size: 14px;" text="Enable notifications" />
+                        <CheckBox fx:id="streakNotificationsCheckBox" style="-fx-font-size: 14px;" text="Show streak milestone notifications" />
+                        <CheckBox fx:id="completionNotificationsCheckBox" style="-fx-font-size: 14px;" text="Show completion notifications" />
+
+                        <Separator />
+
+                        <Label style="-fx-font-size: 14px; -fx-font-weight: bold;" text="Daily Reminder Time:" />
+                        <HBox alignment="CENTER_LEFT" spacing="10.0">
+                            <children>
+                                <Label text="Hour:" />
+                                <Spinner fx:id="reminderHourSpinner" editable="true" prefWidth="80.0" />
+                                <Label text="Minute:" />
+                                <Spinner fx:id="reminderMinuteSpinner" editable="true" prefWidth="80.0" />
+                            </children>
+                        </HBox>
+                    </children>
+                </VBox>
+
+                <!-- General Settings -->
+                <VBox spacing="15.0" style="-fx-background-color: white; -fx-background-radius: 12; -fx-padding: 20;">
+                    <children>
+                        <Label style="-fx-font-size: 18px; -fx-font-weight: bold;" text="⚙️ General Settings" />
+
+                        <CheckBox selected="true" style="-fx-font-size: 14px;" text="Auto-save habits" />
+                        <CheckBox style="-fx-font-size: 14px;" text="Sound effects" />
+                        <CheckBox style="-fx-font-size: 14px;" text="Auto dark mode at night" />
+                        <CheckBox style="-fx-font-size: 14px;" text="Show motivational quotes" />
+
+                        <Separator />
+
+                        <HBox spacing="10.0">
+                            <children>
+                                <Button mnemonicParsing="false" onAction="#handleSaveSettings" style="-fx-background-color: #4CAF50; -fx-text-fill: white; -fx-font-size: 14px; -fx-padding: 10 20; -fx-background-radius: 5;" text="💾 Save Settings" />
+                                <Button mnemonicParsing="false" onAction="#handleExportData" style="-fx-background-color: #2196F3; -fx-text-fill: white; -fx-font-size: 14px; -fx-padding: 10 20; -fx-background-radius: 5;" text="📤 Export Data" />
+                                <Button mnemonicParsing="false" onAction="#handleImportData" style="-fx-background-color: #FF9800; -fx-text-fill: white; -fx-font-size: 14px; -fx-padding: 10 20; -fx-background-radius: 5;" text="📥 Import Data" />
+                            </children>
+                        </HBox>
+                    </children>
+                </VBox>
+
+                <!-- About Section -->
+                <VBox spacing="10.0" style="-fx-background-color: white; -fx-background-radius: 12; -fx-padding: 20;">
+                    <children>
+                        <Label style="-fx-font-size: 18px; -fx-font-weight: bold;" text="ℹ️ About" />
+                        <Label style="-fx-font-size: 14px;" text="Advanced Habit Tracker v2.0" />
+                        <Label style="-fx-font-size: 12px; -fx-text-fill: #666;" text="Built with JavaFX" />
+                        <Label style="-fx-font-size: 12px; -fx-text-fill: #666;" text="© 2026 Your Name" />
+                    </children>
+                </VBox>
+            </children>
+        </VBox>
+    </content>
+</ScrollPane>
