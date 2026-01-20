@@ -1,5 +1,4 @@
 package com.habittracker.model;
-
 public class WeatherData {
     private int temperature;
     private String condition;
@@ -76,4 +75,3 @@ public class WeatherData {
         return icon + " " + temperature + "°C - " + condition;
     }
 }
-

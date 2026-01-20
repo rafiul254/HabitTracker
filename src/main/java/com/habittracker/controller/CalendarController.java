@@ -32,12 +32,11 @@ public class CalendarController {
 
         calendarGrid.getChildren().clear();
 
-        // Set month/year label
         if (monthYearLabel != null) {
             monthYearLabel.setText(currentMonth.getMonth() + " " + currentMonth.getYear());
         }
 
-        // Day headers
+
         String[] days = {"Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"};
         for (int i = 0; i < 7; i++) {
             Label dayLabel = new Label(days[i]);
@@ -47,7 +46,6 @@ public class CalendarController {
             calendarGrid.add(dayLabel, i, 0);
         }
 
-        // Get first day of month
         LocalDate firstDay = currentMonth.atDay(1);
         int dayOfWeek = firstDay.getDayOfWeek().getValue() % 7; // Sunday = 0
         int daysInMonth = currentMonth.lengthOfMonth();
@@ -75,11 +73,9 @@ public class CalendarController {
         cell.setPrefSize(100, 100);
         cell.setStyle("-fx-background-color: white; -fx-border-color: #ddd; -fx-border-width: 1; -fx-padding: 8;");
 
-        // Day number
         Label dayLabel = new Label(String.valueOf(day));
         dayLabel.setStyle("-fx-font-size: 16px; -fx-font-weight: bold;");
 
-        // Habit completion indicator (simulated data)
         int completedHabits = random.nextInt(5);
 
         if (completedHabits > 0) {
@@ -105,7 +101,6 @@ public class CalendarController {
             cell.getChildren().add(dayLabel);
         }
 
-        // Highlight today
         LocalDate today = LocalDate.now();
         if (day == today.getDayOfMonth() &&
                 currentMonth.getMonth() == today.getMonth() &&

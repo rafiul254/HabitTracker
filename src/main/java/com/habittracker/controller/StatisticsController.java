@@ -67,7 +67,6 @@ public class StatisticsController {
         pieChartContainer.getChildren().clear();
         pieChartContainer.setAlignment(Pos.CENTER);
 
-        // Get category data
         Map<String, Integer> categoryData = getCategoryData();
 
         if (categoryData.isEmpty()) {
@@ -77,21 +76,17 @@ public class StatisticsController {
             return;
         }
 
-        // Create canvas for pie chart
         Canvas canvas = new Canvas(300, 300);
         GraphicsContext gc = canvas.getGraphicsContext2D();
 
-        // Colors for categories
         Map<String, Color> colors = new HashMap<>();
         colors.put("Study", Color.web("#FF5252"));
         colors.put("Exercise", Color.web("#FFC107"));
         colors.put("Meditation", Color.web("#4CAF50"));
         colors.put("Outdoor", Color.web("#2196F3"));
 
-        // Calculate total
         int total = categoryData.values().stream().mapToInt(Integer::intValue).sum();
 
-        // Draw pie slices
         double startAngle = 0;
         double centerX = 150;
         double centerY = 150;
@@ -111,7 +106,6 @@ public class StatisticsController {
             startAngle += angle;
         }
 
-        // Create legend
         VBox legend = new VBox(10);
         legend.setAlignment(Pos.CENTER_LEFT);
 
@@ -119,13 +113,11 @@ public class StatisticsController {
             HBox legendItem = new HBox(10);
             legendItem.setAlignment(Pos.CENTER_LEFT);
 
-            // Color box
             VBox colorBox = new VBox();
             colorBox.setPrefSize(20, 20);
             Color color = colors.getOrDefault(entry.getKey(), Color.GRAY);
             colorBox.setStyle("-fx-background-color: " + toHexString(color) + "; -fx-background-radius: 3;");
 
-            // Label
             double percentage = (entry.getValue() / (double) total) * 100;
             Label label = new Label(entry.getKey() + ": " + entry.getValue() +
                     " (" + String.format("%.1f%%", percentage) + ")");
@@ -150,15 +142,12 @@ public class StatisticsController {
         lineChartContainer.getChildren().clear();
         lineChartContainer.setAlignment(Pos.CENTER);
 
-        // Create canvas
         Canvas canvas = new Canvas(600, 250);
         GraphicsContext gc = canvas.getGraphicsContext2D();
 
-        // Sample data for last 7 days
         String[] days = {"Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"};
         int[] completions = {2, 3, 4, 3, 4, 2, 3};
 
-        // Draw axes
         gc.setStroke(Color.web("#666"));
         gc.setLineWidth(2);
 
@@ -167,12 +156,10 @@ public class StatisticsController {
         double chartWidth = 500;
         double chartHeight = 200;
 
-        // Y-axis
         gc.strokeLine(marginLeft, 20, marginLeft, chartHeight + 20);
-        // X-axis
+
         gc.strokeLine(marginLeft, chartHeight + 20, marginLeft + chartWidth, chartHeight + 20);
 
-        // Draw line chart
         gc.setStroke(Color.web("#2196F3"));
         gc.setLineWidth(3);
 
@@ -188,17 +175,14 @@ public class StatisticsController {
 
             gc.strokeLine(x1, y1, x2, y2);
 
-            // Draw points
             gc.setFill(Color.web("#2196F3"));
             gc.fillOval(x1 - 5, y1 - 5, 10, 10);
         }
 
-        // Last point
         double lastX = marginLeft + ((days.length - 1) * xStep);
         double lastY = chartHeight + 20 - (completions[days.length - 1] / (double) maxValue * chartHeight);
         gc.fillOval(lastX - 5, lastY - 5, 10, 10);
 
-        // Draw labels
         gc.setFill(Color.web("#666"));
         gc.setFont(javafx.scene.text.Font.font(12));
 
@@ -207,7 +191,6 @@ public class StatisticsController {
             gc.fillText(days[i], x - 15, chartHeight + 40);
         }
 
-        // Y-axis labels
         for (int i = 0; i <= maxValue; i++) {
             double y = chartHeight + 20 - (i / (double) maxValue * chartHeight);
             gc.fillText(String.valueOf(i), 25, y + 5);
@@ -223,18 +206,15 @@ public class StatisticsController {
 
         List<Habit> habits = habitService.getAllHabits();
 
-        // Best streak
         int bestStreak = habits.stream()
                 .mapToInt(Habit::getStreak)
                 .max()
                 .orElse(0);
 
-        // Total points
         int totalPoints = habits.stream()
                 .mapToInt(Habit::getPoints)
                 .sum();
 
-        // Most productive category
         Map<String, Integer> categoryData = getCategoryData();
         String topCategory = categoryData.entrySet().stream()
                 .max(Map.Entry.comparingByValue())

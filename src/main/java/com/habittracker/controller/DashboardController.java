@@ -44,12 +44,10 @@ public class DashboardController {
             System.out.println("========================================");
             System.out.println("DashboardController initializing...");
 
-            // Setup ListView
             if (habitListView != null) {
                 habitListView.setCellFactory(param -> new HabitListCell());
             }
 
-            // Setup Buttons
             if (addHabitButton != null) {
                 addHabitButton.setOnAction(e -> handleAddHabit());
             }
@@ -58,12 +56,10 @@ public class DashboardController {
                 themeToggleButton.setOnAction(e -> handleThemeToggle());
             }
 
-            // Load Data
             loadHabits();
             loadWeather();
             updateStatistics();
 
-            // Create Chart
             createWeeklyChart();
 
             System.out.println("Dashboard initialized successfully!");
@@ -135,7 +131,6 @@ public class DashboardController {
                 todayProgressBar.setProgress(progress);
             }
 
-            // Update chart when stats change
             createWeeklyChart();
 
             System.out.println("Statistics updated: " + completed + "/" + total + " completed");
@@ -155,11 +150,9 @@ public class DashboardController {
             chartContainer.setSpacing(10);
             chartContainer.setPadding(new Insets(20));
 
-            // Sample weekly data (you can make this dynamic)
             String[] days = {"Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"};
             int[] completions = {1, 2, 4, 3, 2, 1, 0}; // Sample data
 
-            // Find max for scaling
             int max = 5;
 
             for (int i = 0; i < days.length; i++) {
@@ -167,11 +160,9 @@ public class DashboardController {
                 dayColumn.setAlignment(Pos.BOTTOM_CENTER);
                 dayColumn.setPrefWidth(80);
 
-                // Bar
                 double height = (completions[i] / (double) max) * 100;
                 Rectangle bar = new Rectangle(60, Math.max(height, 5));
 
-                // Color based on completion
                 if (completions[i] >= 4) {
                     bar.setFill(Color.web("#4CAF50")); // Green
                 } else if (completions[i] >= 2) {
@@ -183,11 +174,9 @@ public class DashboardController {
                 bar.setArcWidth(8);
                 bar.setArcHeight(8);
 
-                // Count label
                 Label countLabel = new Label(String.valueOf(completions[i]));
                 countLabel.setStyle("-fx-font-size: 12px; -fx-font-weight: bold;");
 
-                // Day label
                 Label dayLabel = new Label(days[i]);
                 dayLabel.setStyle("-fx-font-size: 11px; -fx-text-fill: #666;");
 
@@ -198,7 +187,7 @@ public class DashboardController {
             System.out.println("✓ Weekly chart created");
         } catch (Exception e) {
             System.err.println("✗ Error creating chart: " + e.getMessage());
-            // Fallback to simple label
+
             Label errorLabel = new Label("Chart visualization");
             errorLabel.setStyle("-fx-font-size: 14px; -fx-text-fill: #666;");
             chartContainer.getChildren().add(errorLabel);
@@ -208,16 +197,15 @@ public class DashboardController {
     @FXML
     private void handleAddHabit() {
         try {
-            // Create custom dialog
             Dialog<Habit> dialog = new Dialog<>();
             dialog.setTitle("Add New Habit");
             dialog.setHeaderText("Create a new habit to track");
 
-            // Set buttons
+
             ButtonType addButtonType = new ButtonType("Add", ButtonBar.ButtonData.OK_DONE);
             dialog.getDialogPane().getButtonTypes().addAll(addButtonType, ButtonType.CANCEL);
 
-            // Create form
+
             GridPane grid = new GridPane();
             grid.setHgap(10);
             grid.setVgap(10);
@@ -238,10 +226,8 @@ public class DashboardController {
 
             dialog.getDialogPane().setContent(grid);
 
-            // Focus on name field
             nameField.requestFocus();
 
-            // Convert result
             dialog.setResultConverter(dialogButton -> {
                 if (dialogButton == addButtonType) {
                     String name = nameField.getText().trim();
@@ -252,13 +238,11 @@ public class DashboardController {
                 return null;
             });
 
-            // Show and process
             dialog.showAndWait().ifPresent(habit -> {
                 habitService.addHabit(habit);
                 loadHabits();
                 updateStatistics();
 
-                // Show success message
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setTitle("Success");
                 alert.setHeaderText(null);
@@ -300,7 +284,7 @@ public class DashboardController {
         }
     }
 
-    // Custom ListCell for Habit display
+
     private class HabitListCell extends ListCell<Habit> {
         @Override
         protected void updateItem(Habit habit, boolean empty) {
@@ -326,7 +310,6 @@ public class DashboardController {
                     updateStatistics();
                     habitListView.refresh();
 
-                    // Show celebration for completion
                     if (habit.isCompleted()) {
                         System.out.println("🎉 Habit completed: " + habit.getName());
                     }

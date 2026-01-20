@@ -9,7 +9,6 @@ import javafx.scene.control.TabPane;
 import javafx.stage.Stage;
 import com.habittracker.util.ThemeManager;
 import com.habittracker.util.NotificationManager;
-
 import java.io.IOException;
 
 public class AdvancedHabitTrackerApp extends Application {
@@ -21,11 +20,11 @@ public class AdvancedHabitTrackerApp extends Application {
             System.out.println("Starting Advanced Habit Tracker Pro...");
             System.out.println("========================================");
 
-            // Create TabPane for navigation
+
             TabPane tabPane = new TabPane();
             tabPane.setTabClosingPolicy(TabPane.TabClosingPolicy.UNAVAILABLE);
 
-            // Load all views
+
             Tab dashboardTab = createTab("🏠 Dashboard", "/com/habittracker/view/dashboard.fxml");
             Tab calendarTab = createTab("📅 Calendar", "/com/habittracker/view/calendar.fxml");
             Tab statisticsTab = createTab("📊 Statistics", "/com/habittracker/view/statistics.fxml");
@@ -33,19 +32,16 @@ public class AdvancedHabitTrackerApp extends Application {
 
             tabPane.getTabs().addAll(dashboardTab, calendarTab, statisticsTab, settingsTab);
 
-            // Create scene
             Scene scene = new Scene(tabPane, 1200, 800);
             ThemeManager.setCurrentScene(scene);
             ThemeManager.applyTheme(scene, ThemeManager.Theme.LIGHT);
 
-            // Setup stage
             primaryStage.setTitle("Advanced Habit Tracker Pro");
             primaryStage.setScene(scene);
             primaryStage.setMinWidth(900);
             primaryStage.setMinHeight(600);
             primaryStage.show();
 
-            // Show welcome notification
             NotificationManager.getInstance().showSuccess(
                     "Welcome to Advanced Habit Tracker! 🎉"
             );

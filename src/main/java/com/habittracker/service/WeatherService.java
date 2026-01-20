@@ -1,5 +1,4 @@
 package com.habittracker.service;
-
 import com.habittracker.model.WeatherData;
 import java.util.Random;
 

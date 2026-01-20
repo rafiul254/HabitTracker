@@ -444,7 +444,7 @@ FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
 
 If you find this project helpful, please consider giving it a star! ⭐
 
-[![Star History Chart](https://api.star-history.com/svg?repos=YourUsername/AdvancedHabitTracker&type=Date)](https://star-history.com/#YourUsername/AdvancedHabitTracker&Date)
+[![Star History Chart](https://api.star-history.com/svg?repos=rafiul254/HabitTracker&type=Date)]
 
 ---
 

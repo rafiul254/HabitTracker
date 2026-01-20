@@ -1,5 +1,4 @@
 package com.habittracker.model;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -55,6 +54,3 @@ public class HabitTracker {
         return (double) getCompletedToday() / habits.size() * 100;
     }
 }
-
-
-
